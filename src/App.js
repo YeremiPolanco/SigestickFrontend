@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import "./App.css";
+import Dashboard from "./component/Dashboard";
+import Login from "./component/Auth/Login";
+import Sidebar from "./component/Adicionales/Sidebar";
+import List from "./component/Ticket/List";
+import ThemeSwitcher from "./component/Adicionales/ThemeSwitcher";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const location = useLocation();
+    const shouldShowSidebar = location.pathname !== "/";
 
-export default App;
+    return (
+        <div className="App">
+            <ThemeSwitcher />
+            {shouldShowSidebar && <Sidebar />}
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/list" element={<List />} />
+            </Routes>
+        </div>
+    );
+};
+
+const WrapperApp = () => (
+    <Router>
+        <App />
+    </Router>
+);
+
+export default WrapperApp;

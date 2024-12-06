@@ -1,0 +1,32 @@
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 0; /* Eliminamos margen adicional */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+    transition: transform 0.2s ease;
+    height: 250px; /* Altura fija para uniformidad */
+    display: flex;
+    flex-direction: column; /* Alineación vertical */
+    justify-content: space-between; /* Espaciado interno entre elementos */
+}
+
+.details-button {
+    display: block; /* Asegura que el botón se comporte como un bloque */
+    margin: 10px auto; /* Centra horizontalmente */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.details-button:hover {
+    background-color: #0056b3;
+}

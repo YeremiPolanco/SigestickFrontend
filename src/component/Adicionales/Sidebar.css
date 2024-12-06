@@ -1,0 +1,179 @@
+/* Botón para abrir/cerrar el menú */
+.menu-button {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-color: #ffc107; /* Color amarillo */
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.menu-button:hover {
+    background-color: #ffca2c; /* Amarillo más oscuro en hover */
+    transform: scale(1.05);
+}
+
+/* Sidebar cerrado y abierto */
+.sidebar {
+    height: 100vh;
+    background-color: #343a40; /* Color oscuro */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    overflow-x: hidden;
+    transition: width 0.3s ease;
+    z-index: 999;
+    padding-top: 60px;
+}
+
+.sidebar.open {
+    width: 250px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); /* Sombra en el sidebar */
+}
+
+/* Título del sidebar */
+.title {
+    color: #ffc107; /* Amarillo brillante para el título */
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Lista y elementos del menú */
+.list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.list-item:hover {
+    background-color: #495057; /* Color gris oscuro al pasar el ratón */
+    transform: translateX(5px); /* Efecto de deslizamiento */
+}
+
+/* Estilos para el ícono */
+.icon {
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+/* Enlace a la página de inventario */
+.link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.link:hover {
+    color: #ffc107; /* Amarillo en hover */
+}
+
+/* Botón para cerrar sesión */
+.logout-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: left;
+    padding: 10px 20px;
+    width: 100%;
+    transition: background-color 0.2s ease;
+}
+
+.logout-button:hover {
+    background-color: #495057; /* Gris oscuro en hover */
+}
+
+/* Contenido principal de la página */
+.content {
+    margin-left: 0;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+/* Ajusta el espacio para el contenido principal */
+.main-content {
+    transition: margin-left 0.3s ease;
+    margin-left: 250px; /* Espacio reservado para el sidebar */
+    padding: 20px;
+    max-width: 90%; /* Limitar ancho del contenido para evitar bordes */
+    margin: 0 auto; /* Centrar el contenido */
+}
+
+.container {
+    padding: 20px;
+}
+
+.table th, .table td {
+    text-align: center;
+    padding: 12px;
+}
+
+.btn-group .btn {
+    margin-right: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.btn-group .btn:hover {
+    background-color: #ffc107; /* Botones con amarillo al pasar el ratón */
+    color: black;
+}
+
+/* Total orders */
+.total-orders {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #ffc107; /* Amarillo en el total */
+    margin-top: 20px;
+}
+
+/* Sidebar cerrado */
+.sidebar-closed {
+    margin-left: 0;
+    width: 0;
+}
+
+/* Media Queries para hacer responsivo el Sidebar */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 0; /* Ocultar el sidebar en pantallas pequeñas */
+    }
+    .sidebar.open {
+        width: 200px; /* Reducir el tamaño del sidebar */
+    }
+
+    .main-content {
+        margin-left: 0; /* El contenido ocupa todo el ancho */
+    }
+
+    .menu-button {
+        top: 10px;
+        left: 10px;
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}

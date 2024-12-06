@@ -1,0 +1,130 @@
+/* Estilos globales y contenedor del login */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    background-color: #000; /* Negro */
+    color: #fff; /* Blanco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.login-card {
+    background-color: #1c1c1c; /* Gris oscuro */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    width: 350px;
+    text-align: center;
+}
+
+.login-title {
+    color: #FFC300; /* Amarillo */
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+/* Formulario */
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+label {
+    font-size: 0.9rem;
+    color: #FFC300; /* Amarillo */
+}
+
+input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #FFC300;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1rem;
+    box-sizing: border-box; /* Para incluir padding y border en el ancho total */
+}
+
+input:focus {
+    outline: none;
+    border-color: #ffde59; /* Amarillo claro */
+}
+
+/* Contenedor de la contraseña */
+.password-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%; /* Igual al ancho de los inputs */
+}
+
+.password-wrapper input {
+    padding-right: 2.5rem; /* Espacio para el botón de ver contraseña */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #FFC300; /* Amarillo */
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+    color: #ffde59; /* Amarillo claro */
+}
+
+/* Botón de login */
+.login-button {
+    background-color: #FFC300;
+    color: #000; /* Negro */
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #ffde59;
+}
+
+/* Enlace de registro */
+.register-link {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.register-link a {
+    color: #FFC300;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,21 @@
+.ticket-list {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: flex-start;
+}
+
+.ticket-list h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 16px;
+}
