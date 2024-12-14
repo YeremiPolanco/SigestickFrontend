@@ -23,7 +23,7 @@ const Login = () => {
             .then(() => {
                 // Redirigir al usuario o realizar otras acciones después del login
                 console.log('Inicio de sesión exitoso');
-                window.location.href = '/list'; // Redirección de ejemplo
+                window.location.href = '/dashboard'; // Redirección de ejemplo
             })
             .catch((error) => {
                 setErrorMessage('Credenciales inválidas. Intente nuevamente.');

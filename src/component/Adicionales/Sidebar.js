@@ -72,7 +72,7 @@ const Sidebar = () => {
                     </li>
                     <li className="list-item">
                         <FaWarehouse className="icon"/>
-                        <Link to="/order" className="link">Order</Link>
+                        <Link to="/list" className="link">List</Link>
                     </li>
                     <li className="list-item">
                         <FaWarehouse className="icon"/>

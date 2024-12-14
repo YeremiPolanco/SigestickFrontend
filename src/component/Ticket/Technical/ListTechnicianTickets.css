@@ -1,0 +1,67 @@
+/* General styling for the page */
+.list-admin {
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Title styling */
+.list-admin-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--primary-color, #4caf50);
+}
+
+/* Table container */
+.table-container {
+    max-height: calc(100vh - 150px); /* Ajusta el tamaño según el contenido */
+    overflow-x: auto; /* Scroll horizontal */
+    overflow-y: auto; /* Scroll vertical */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling for mobile devices */
+    margin-top: 20px; /* Separación con el título */
+    border: 1px solid #ccc; /* Borde para delimitar la tabla */
+    border-radius: 5px;
+    background-color: #fff; /* Fondo blanco para el contenedor */
+}
+
+/* Table styling */
+.tickets-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tickets-table th,
+.tickets-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: black; /* Asegura que las letras sean siempre negras */
+
+}
+
+.tickets-table th {
+    background-color: var(--primary-color, #4caf50);
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.tickets-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color alternativo para filas pares */
+}
+
+.tickets-table tbody tr:hover {
+    background-color: #e8f5e9; /* Color de hover */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tickets-table th,
+    .tickets-table td {
+        font-size: 12px; /* Ajusta el tamaño de fuente en pantallas pequeñas */
+    }
+}

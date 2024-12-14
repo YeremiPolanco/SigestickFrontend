@@ -1,0 +1,95 @@
+/* General styling for the page */
+.list-admin {
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Title styling */
+.list-admin-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--primary-color, #4caf50);
+}
+
+/* Table container */
+.table-container {
+    max-height: calc(100vh - 150px); /* Ajusta el tamaño según el contenido */
+    overflow-x: auto; /* Scroll horizontal */
+    overflow-y: auto; /* Scroll vertical */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling for mobile devices */
+    margin-top: 20px; /* Separación con el título */
+    border: 1px solid #ccc; /* Borde para delimitar la tabla */
+    border-radius: 5px;
+    background-color: #fff; /* Fondo blanco para el contenedor */
+}
+
+/* Table styling */
+.tickets-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tickets-table th,
+.tickets-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: black; /* Asegura que las letras sean siempre negras */
+
+}
+
+.tickets-table th {
+    background-color: var(--primary-color, #4caf50);
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.tickets-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color alternativo para filas pares */
+}
+
+.tickets-table tbody tr:hover {
+    background-color: #e8f5e9; /* Color de hover */
+}
+
+/* Button styling */
+.assign-button {
+    background-color: #ffc107; /* Botón amarillo */
+    color: #fff; /* Texto blanco */
+    border: none; /* Sin borde */
+    padding: 10px 15px; /* Espaciado interno */
+    font-size: 14px; /* Tamaño de fuente */
+    border-radius: 5px; /* Esquinas redondeadas */
+    cursor: pointer; /* Cursor de mano al pasar sobre el botón */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+}
+
+.assign-button:hover {
+    background-color: #e0a800; /* Color más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Efecto de ampliación ligera */
+}
+
+.assign-button:focus {
+    outline: none; /* Sin borde azul de enfoque */
+    box-shadow: 0 0 5px 2px rgba(255, 193, 7, 0.5); /* Efecto de enfoque */
+}
+
+.assign-button:disabled {
+    background-color: #ffe082; /* Color más claro para botones desactivados */
+    cursor: not-allowed; /* Cursor no permitido */
+    opacity: 0.6; /* Opacidad reducida */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tickets-table th,
+    .tickets-table td {
+        font-size: 12px; /* Ajusta el tamaño de fuente en pantallas pequeñas */
+    }
+}
