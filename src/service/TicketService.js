@@ -144,7 +144,35 @@ const TicketService = {
         }
     },
 
+    respondToTicket: async (ticketId, responseMessage) => {
+        try {
+            const response = await axios.put(`${BASE_URL}/${ticketId}/response`, responseMessage, {
+                headers: {
+                    Authorization: `Bearer ${getAuthToken()}`,
+                    "Content-Type": "text/plain",
+                },
+            });
+            return response.data;
+        } catch (error) {
+            console.error("Error al responder al ticket:", error);
+            throw new Error("No se pudo responder al ticket.");
+        }
+    },
 
+    // Nueva función para finalizar el ticket
+    finishTicket: async (ticketId) => {
+        try {
+            const response = await axios.put(`${BASE_URL}/${ticketId}/finish`, {}, {
+                headers: {
+                    Authorization: `Bearer ${getAuthToken()}`,
+                },
+            });
+            return response.data;
+        } catch (error) {
+            console.error("Error al finalizar el ticket:", error);
+            throw new Error("No se pudo finalizar el ticket.");
+        }
+    },
 };
 
 export default TicketService;

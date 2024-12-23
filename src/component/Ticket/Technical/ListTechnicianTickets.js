@@ -35,7 +35,7 @@ const ListTechnicianTickets = () => {
 
     return (
         <div className="list-admin">
-            <h1 className="list-admin-title">Listado de Tickets (Admin)</h1>
+            <h1 className="list-admin-title">Listado de Tickets a cargo del técnico</h1>
             <div className="table-container">
                 <table className="tickets-table">
                     <thead>

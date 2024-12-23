@@ -114,3 +114,34 @@
     }
 }
 
+/* Estilo para el botón */
+.finish-ticket .finish-button {
+    background-color: #4CAF50; /* Color verde */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.finish-ticket .finish-button:hover {
+    background-color: #45a049;
+}
+
+/* Estilo para el área de texto de respuesta */
+.response-message {
+    margin-top: 20px;
+}
+
+.response-textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    resize: none;
+}
+

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import TicketService from "../../../service/TicketService";
-import "./TicketDetailUser.css";
 import { format } from "date-fns";
-import { FaCheck, FaTimes } from "react-icons/fa";  // Añadir íconos
+import { FaCheck, FaTimes } from "react-icons/fa";
+import Swal from "sweetalert2"; // Importa SweetAlert2
+import "./TicketDetailUser.css";
+import axios from "axios";
 
 const TicketDetailUser = () => {
     const { id } = useParams();
     const [ticket, setTicket] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [responseMessage, setResponseMessage] = useState(""); // Estado para la respuesta del API
 
     useEffect(() => {
         const fetchTicket = async () => {
@@ -36,15 +39,15 @@ const TicketDetailUser = () => {
 
     const getImageUrl = (imageBytes) => {
         if (imageBytes) {
-            const byteCharacters = atob(imageBytes);  // Decodifica el string base64
+            const byteCharacters = atob(imageBytes);
             const byteArray = new Uint8Array(byteCharacters.length);
 
             for (let i = 0; i < byteCharacters.length; i++) {
-                byteArray[i] = byteCharacters.charCodeAt(i);  // Convierte cada carácter en su valor ASCII
+                byteArray[i] = byteCharacters.charCodeAt(i);
             }
 
-            const blob = new Blob([byteArray], { type: "image/jpeg" });  // Crea un blob con los datos binarios
-            return URL.createObjectURL(blob);  // Convierte el blob en un URL
+            const blob = new Blob([byteArray], { type: "image/jpeg" });
+            return URL.createObjectURL(blob);
         }
         return null;
     };
@@ -83,6 +86,9 @@ const TicketDetailUser = () => {
                         <div className="item">
                             <span>Técnico:</span> {ticket.technical.fullName || "No asignado"}
                         </div>
+                        <div className="item">
+                            <span>Respuesta:</span> {ticket.response || "Pendiente"}
+                        </div>
                     </div>
                 </div>
 
@@ -97,36 +103,66 @@ const TicketDetailUser = () => {
                     </div>
                 )}
 
-
                 {/* Card de Estado del Ticket */}
                 <div className="card">
                     <h3 className="title">Estado</h3>
                     <ul className="timeline">
                         <li>
                             <div className={`circle ${getStatusCircle(ticket.createdAt)}`}>
-                                {ticket.createdAt ? <FaCheck/> : <FaTimes/>}
+                                {ticket.createdAt ? <FaCheck /> : <FaTimes />}
                             </div>
                             <div className="text">Registrado - {ticket.createdAt && format(new Date(ticket.createdAt), 'dd/MM/yyyy HH:mm:ss')}</div>
                         </li>
                         <li>
                             <div className={`circle ${getStatusCircle(ticket.assingnedAt)}`}>
-                                {ticket.assingnedAt ? <FaCheck/> : <FaTimes/>}
+                                {ticket.assingnedAt ? <FaCheck /> : <FaTimes />}
                             </div>
                             <div className="text">Asignado - {ticket.assingnedAt && format(new Date(ticket.assingnedAt), 'dd/MM/yyyy HH:mm:ss') || "Pendiente"}</div>
                         </li>
                         <li>
                             <div className={`circle ${getStatusCircle(ticket.inProgressAt)}`}>
-                                {ticket.inProgressAt ? <FaCheck/> : <FaTimes/>}
+                                {ticket.inProgressAt ? <FaCheck /> : <FaTimes />}
                             </div>
                             <div className="text">En progreso - {ticket.inProgressAt && format(new Date(ticket.inProgressAt), 'dd/MM/yyyy HH:mm:ss') || "Pendiente"}</div>
                         </li>
                         <li>
                             <div className={`circle ${getStatusCircle(ticket.resolvedAt)}`}>
-                                {ticket.resolvedAt ? <FaCheck/> : <FaTimes/>}
+                                {ticket.resolvedAt ? <FaCheck /> : <FaTimes />}
                             </div>
                             <div className="text">Finalizado - {ticket.resolvedAt && format(new Date(ticket.resolvedAt), 'dd/MM/yyyy HH:mm:ss') || "Pendiente"}</div>
                         </li>
                     </ul>
+
+                    {/* Botón para finalizar el ticket */}
+                    {ticket.inProgressAt && !ticket.resolvedAt && (
+                        <div className="finish-ticket">
+                            <button
+                                onClick={() => {
+                                    TicketService.finishTicket(ticket.ticketId)
+                                        .then(() => {
+                                            // Después de que el ticket se haya finalizado, recarga la página
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'Ticket finalizado',
+                                                text: 'El ticket se ha finalizado correctamente.',
+                                            }).then(() => {
+                                                window.location.reload(); // Recarga la página
+                                            });
+                                        })
+                                        .catch((err) => {
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Error',
+                                                text: 'Hubo un error al finalizar el ticket.',
+                                            });
+                                        });
+                                }}
+                                className="finish-button"
+                            >
+                                Aceptar
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
